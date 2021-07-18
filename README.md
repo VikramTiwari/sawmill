@@ -52,6 +52,6 @@ Notes about sample:
 - This is a sample for batch request. You can use the same format but only include 1 message in post request to make it streaming.
 - Max request size limit is 32mb and is imposed by cloud run. If you are using other service to deploy the project, check it's documentation to get the correct size limits.
 - Timestamp key here is the timestamp on user's device. It's ISO timestamped. Project will use this timestamp to override stackdriver's timestamp. This allows you to see logs based on the same order as they were collected, even if they were sent as a batch.
-- Level corresponds to [stackdriver log severiry levels](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logseverity). They allow you to quickly filter logs based on a level on stackdriver logging dashboard.
+- Level corresponds to [stackdriver log severity levels](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logseverity). They allow you to quickly filter logs based on a level on stackdriver logging dashboard.
 - Message corresponds to the message shown on stackdriver log message. I would suggest always having message key with an easy to read string message.
 - All other keys can be customized based on what you and your team determines to best suit the level of granularity.
