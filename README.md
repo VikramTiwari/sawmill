@@ -5,22 +5,25 @@
 This server allows you to collect logs from various sources.
 
 ## Features
-- Simple and straigtforward setup.
+
+- Simple and straightforward setup.
 - Send single log entries or a batch of them.
 - Sane pre-processing to add extra metadata to the logs.
 - Complete freedom over the schema customization of logs.
 - See logs in realtime as they arrive, on stackdriver logging.
 
 ## How to use
+
 - Deploy the project on cloud run using the button above. This will deploy the app to your choice of Google Cloud project along with other sane defaults.
-![sawmill-deployment-on-cloud-run](https://user-images.githubusercontent.com/1330677/126078285-acb98123-efcb-4890-ad8a-f8eaa7b1ce44.png)
+  ![sawmill-deployment-on-cloud-run](https://user-images.githubusercontent.com/1330677/126078285-acb98123-efcb-4890-ad8a-f8eaa7b1ce44.png)
 
 - Start sending POST requests to get logs on your server.
 
 ### Sample
 
 The following request:
-```
+
+```sh
 curl --location --request POST 'https://YOUR_APP_URL/' \
 --header 'Content-Type: application/json' \
 --data-raw '[{
@@ -47,8 +50,8 @@ curl --location --request POST 'https://YOUR_APP_URL/' \
 Will show up as following:
 ![sample-log-on-stackdriver-logging](https://user-images.githubusercontent.com/1330677/126078412-d42dfffe-5fe8-43b6-91cb-9a74940fffe7.png)
 
-
 Notes about sample:
+
 - This is a sample for batch request. You can use the same format but only include 1 message in post request to make it streaming.
 - Max request size limit is 32mb and is imposed by cloud run. If you are using other service to deploy the project, check it's documentation to get the correct size limits.
 - Timestamp key here is the timestamp on user's device. It's ISO timestamped. Project will use this timestamp to override stackdriver's timestamp. This allows you to see logs based on the same order as they were collected, even if they were sent as a batch.

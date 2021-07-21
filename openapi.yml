@@ -1,0 +1,32 @@
+swagger: "2.0"
+info:
+  title: "Sawmill"
+  description: "A logging server for all your logging needs."
+  version: "1.0.0"
+  license:
+    name: MIT
+host: "REPLACE_WITH_YOUR_APP_URL.run.app"
+schemes:
+  - "https"
+paths:
+  "/":
+    get:
+      description: "Status check."
+      responses:
+        200:
+          description: "Success."
+          schema:
+            type: string
+    post:
+      description: "Ingest batch log. Send a single entry in array for individual log."
+      responses:
+        200:
+          description: Log has been successfully ingested.
+  "/_healthz":
+    get:
+      description: "Health check endpoint. Any query parameters will be returned as is."
+      responses:
+        200:
+          description: "Success."
+          schema:
+            type: string
